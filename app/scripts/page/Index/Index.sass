@@ -1,0 +1,172 @@
+@import ~styles/main
+@import ~styles/mixins
+
+.p-index
+  $a-duration-bg: 0.5s
+  $a-duration-oscillators: 1.5s
+  $a-duration-letters: 0.825s
+  $a-duration-logo: 0.75s
+  $a-duration-contacts: 1.5s
+
+  $a-delay-first: 0.5s
+  $a-delay-second: 2.3s
+
+  $a-ease-both: cubic-bezier(.42, 0, .58, 1)
+
+  size: 100vw 100vh
+  overflow: hidden
+  background-image: linear-gradient(to top, #01009e 0%, #01009e 60%, #01006a 100%)
+  position: relative
+  opacity: 0
+  transition: opacity $a-duration-bg $a-ease-both
+  +adaptive-min-height
+  .ie-9 &
+    background:
+      image: url('~images/bg-ie.jpg')
+      size: 100%
+
+  &.__animated
+    opacity: 1
+  +media-ipad
+    height: calc(100vh - 50px)
+  +media-phone
+    min-height: 757px
+    overflow: hidden
+
+  &--oscillators
+    position: absolute
+    z-index: 3
+    opacity: 0
+    top: 200px
+    // top: 0
+    transition: opacity $a-duration-oscillators $a-ease-both $a-delay-first
+    +media-phone
+      top: 100px
+    .__animated &
+      opacity: 1
+
+  &--logo-wrap
+    outline: none
+
+  &--logo
+    position: absolute
+    left: 1300px
+    top: 83px
+    z-index: 4
+    opacity: 0
+    transition: opacity $a-duration-logo $a-ease-both $a-delay-second
+    .__animated &
+      opacity: 1
+    +media-max(1530px)
+      right: 86px
+      left: inherit
+    +media-phone
+      top: 44px
+      right: 77px
+
+  &--tagline
+    +adaptive-font
+    font-family: $f-league
+    text-transform: uppercase
+    position: absolute
+    left: 290px
+    z-index: 4
+    p
+      position: relative
+      top: 0.85vw
+    +media-tablet-portrait
+      left: 80px
+    +media-phone
+      left: 20px
+      transform: none
+      p
+        top: 0
+
+  &--word-1, &--word-2, &--word-3
+    display: block
+
+  &--word-1
+    letter-spacing: -0.01rem
+
+  &--letters-1
+    letter-spacing: -0.045rem
+
+  &--word-2
+    letter-spacing: -0.04rem
+
+  &--letters-2
+    letter-spacing: -0.02rem
+
+  &--word-3
+    letter-spacing: -0.025rem
+
+  &--letters-3
+    letter-spacing: -0.045rem
+
+  &--letters-4
+    letter-spacing: -0.04rem
+
+  &--letters-5
+    letter-spacing: -0.035rem
+
+  &--letters-6
+    letter-spacing: -0.055rem
+    margin-right: 0.98rem
+
+  &--letters-7
+    letter-spacing: -0.027rem
+
+  &--ea, &--rvi
+    height: 239px
+    position: absolute
+    fill: #000076
+    opacity: 0
+    transition: opacity $a-duration-letters $a-ease-both $a-delay-first
+    .__animated &
+      opacity: 1
+
+  &--ea
+    width: 215px
+    right: 15px
+    bottom: 168px
+    z-index: 1
+    +media-phone
+      bottom: 185px
+      right: 8px
+
+  &--rvi
+    width: 284px
+    left: -36px
+    bottom: -114px
+    z-index: 1
+
+  &--fb, &--contacts
+    font: 11.5px/19px $f-roboto
+    letter-spacing: 0.3px
+    position: absolute
+    bottom: 31px
+    z-index: 4
+    opacity: 0
+    transition: opacity $a-duration-contacts $a-ease-both $a-delay-second
+    .__animated &
+      opacity: 1
+
+  &--fb
+    left: 41px
+    +media-phone
+      left: 19px
+      bottom: 21px
+
+  &--contacts
+    width: 185px
+    right: 46px
+    list-style: none
+    +media-phone
+      bottom: 115px
+      width: 132px
+
+  &--contact
+    &.__line-1
+      letter-spacing: 0.44px
+    &.__email
+      letter-spacing: 0.44px

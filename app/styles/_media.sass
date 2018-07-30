@@ -1,0 +1,50 @@
+$w-desktop-max: 1440px
+$w-desktop-mid: 1280px
+$w-desktop-min: 1025px
+$w-tablet-max: $w-desktop-min - 1
+$w-tablet-mid: 950px
+$w-tablet-min: 768px
+$w-phone: $w-tablet-min - 1
+
+=media-macbook
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi)
+    @content
+
+=media-tablet
+  @media (max-width: $w-tablet-max)
+    @content
+
+=media-tablet-landscape
+  @media (max-width: $w-tablet-max) and (orientation: landscape)
+    @content
+
+=media-tablet-portrait
+  @media (max-width: $w-tablet-max) and (orientation: portrait)
+    @content
+
+=media-ipad
+  @media (max-width: $w-tablet-max)
+    body.ipad &
+      @content
+
+=media-phone
+  @media (max-width: $w-phone)
+    @content
+
+=media-iphone
+  @media (max-width: $w-phone) and (-webkit-min-device-pixel-ratio: 2)
+    body.iphone &
+      @content
+
+=media-max($width)
+  @media (max-width: $width)
+    @content
+
+=media-min($width)
+  @media (min-width: $width)
+    @content
+
+=media-between($min-width, $max-width)
+  @media (max-width: $max-width) and (min-width: $min-width)
+    @content

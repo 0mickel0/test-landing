@@ -1,0 +1,34 @@
+@import ~styles/media
+
+=adaptive-font
+  font-size: 201px
+  line-height: 168px
+  +media-tablet
+    font-size: 168px
+    line-height: 141px
+  @for $i from 0 through 20
+    @media (max-width: 2000-$i*48.8px)
+      font-size: 168 - $i * 5.05 + 0px
+      line-height: 141 - $i * 4.2 + 0px
+  @for $i from 0 through 20
+    @media (max-width: 2000-$i*48.8px) and (min-height: 1400-$i*48.8px)
+      font-size: 201 - $i * 5.25 + 0px
+      line-height: 168 - $i * 4.4 + 0px
+  @for $j from 0 through 20
+    @media (max-width: 1024-$j*12.8px)
+      font-size: 168 - $j * 1.54 + 0px
+      line-height: 141 - $j * 1.32 + 0px
+    @media (max-width: 1024-$j*12.8px) and (orientation: landscape)
+      font-size: 105 - $j * 0.6 + 0px
+      line-height: 88 - $j * 0.6 + 0px
+  @for $j from 0 through 20
+    @media (max-width: 767-$j*22.3px)
+      font-size: 137 - $j * 2.65 + 0px
+      line-height: 114 - $j * 2.2 + 0px
+    @media (max-width: 767-$j*22.3px) and (orientation: landscape)
+      font-size: 102 - $j * 3.9 + 0px
+      line-height: 85 - $j * 3.6 + 0px
+=adaptive-min-height
+  @for $i from 0 through 20
+    @media (max-width: 2000-$i*52.5px)
+      min-height: 858 - $i * 20 + 0px
