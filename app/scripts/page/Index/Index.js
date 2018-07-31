@@ -3,6 +3,7 @@ import 'velocity-animate';
 import {debounce} from 'lodash';
 import {isMobile, isDesktop} from 'helpers/ScreenSize';
 import Oscillators from './Oscillators.paper';
+import {particleNet} from './partical';
 import WindowHelper from 'helpers/WindowHelper';
 import 'fonts/LeagueGothic/LeagueGothic.css';
 import 'fonts/Roboto/Roboto.css';
@@ -15,11 +16,13 @@ export default _Page.extend({
 
   ui: {
     oscillators: '[data-js-oscillators]',
+    particular: '[data-js-particular]',
     tagline: '[data-js-tagline]',
   },
 
   // protected:
   initialize() {
+    particleNet(this.ui.particular.get(0));
     this.onResizeThrottle = debounce(this.onResize, 50);
     WindowHelper.trackEvent('resize', this.onResizeThrottle, this);
     WindowHelper.trackEvent('mousemove', this.onMousemove, this);
